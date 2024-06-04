@@ -1,3 +1,37 @@
+docker buildx imagetools inspect docker.io/pewkap/labtest:v7
+Name:      docker.io/pewkap/labtest:v7
+MediaType: application/vnd.oci.image.index.v1+json
+Digest:    sha256:f61568a1335a47548916359588f93e7eed4684fc0e01ea21494d0a7999413c52
+           
+Manifests: 
+  Name:        docker.io/pewkap/labtest:v7@sha256:009f7c0cbc93b2f270481c2c0290e3fa1a08c7fe6460b2c4c35df7176b7d3dbb
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/amd64
+               
+  Name:        docker.io/pewkap/labtest:v7@sha256:a4e0fc59d6c04c12676730cbdef1c46d96c7c9de034ddca0724fcc30f58cb9d7
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/arm64
+               
+  Name:        docker.io/pewkap/labtest:v7@sha256:e6b2c7dd93b5f8fbed32770d9d3b112aafd6365327580df9f47d34598deb8de7
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    vnd.docker.reference.digest: sha256:009f7c0cbc93b2f270481c2c0290e3fa1a08c7fe6460b2c4c35df7176b7d3dbb
+    vnd.docker.reference.type:   attestation-manifest
+               
+  Name:        docker.io/pewkap/labtest:v7@sha256:87373d0410a88638cb21510d7bc248101848437fa8a7488c2c148c79e726c458
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations: 
+    vnd.docker.reference.digest: sha256:a4e0fc59d6c04c12676730cbdef1c46d96c7c9de034ddca0724fcc30f58cb9d7
+    vnd.docker.reference.type:   attestation-manifest
+
+
+
+
+
+
+
 piotrek@netpanel-87-246-221-159 lab7 % docker buildx build \
   --platform linux/amd64,linux/arm64 \
   --tag docker.io/pewkap/labtest:v7 \
@@ -87,5 +121,4 @@ piotrek@netpanel-87-246-221-159 lab7 % docker buildx build \
  => => writing cache manifest sha256:8e9a5439d1cde9cc1155eaade1427360c2b63a48ee4ae6cbf3169a8948e114b6                                                                      1.2s
 
 View build details: docker-desktop://dashboard/build/lab7builder/lab7builder0/hhjkuvsqs8fhurgy2u39kfonl
-piotrek@netpanel-87-246-221-159 lab7 % 
 ![alt text](image.png)
