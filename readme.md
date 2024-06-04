@@ -27,6 +27,35 @@ Manifests:
     vnd.docker.reference.type:   attestation-manifest
 
 
+wskazać na te fragmenty log-ów, które potwierdzają, że dane
+cache zostały pobrane z registry oraz, że zostały one wykorzystane w ponownym procesie
+budowy obrazu. 
+
+=> CACHED [linux/amd64 stage-1 2/6] RUN apk add --update --no-cache curl                                                                                                  0.0s
+ => CACHED [linux/amd64 stage-1 3/6] RUN mkdir -p /home/node/app                                                                                                           0.0s
+ => CACHED [linux/amd64 stage-1 4/6] WORKDIR /home/node/app                                                                                                                0.0s
+ => CACHED [linux/amd64 builder 1/7] ADD alpine-minirootfs-3.19.1-aarch64.tar /                                                                                            0.0s
+ => CACHED [builder 2/7] RUN apk update &&     apk upgrade &&     apk add --no-cache nodejs=20.12.1-r0     npm=10.2.5-r0 &&     rm -rf /etc/apk/cache                      0.0s
+ => CACHED [builder 3/7] RUN addgroup -S node &&     adduser -S node -G node                                                                                               0.0s
+ => CACHED [linux/amd64 builder 4/7] WORKDIR /home/node/app                                                                                                                0.0s
+ => CACHED [linux/amd64 builder 5/7] COPY --chown=node:node server.js ./server.js                                                                                          0.0s
+ => CACHED [linux/amd64 builder 6/7] COPY --chown=node:node package.json ./package.json                                                                                    0.0s
+ => CACHED [builder 7/7] RUN npm install                                                                                                                                   0.0s
+ => CACHED [linux/amd64 stage-1 5/6] COPY --from=builder --chown=node:node /home/node/app/server.js ./server.js                                                            0.0s
+ => CACHED [linux/amd64 stage-1 6/6] COPY --from=builder --chown=node:node /home/node/app/node_modules ./node_modules                                                      0.0s
+ => CACHED [linux/arm64 stage-1 2/6] RUN apk add --update --no-cache curl                                                                                                  0.0s
+ => CACHED [linux/arm64 stage-1 3/6] RUN mkdir -p /home/node/app                                                                                                           0.0s
+ => CACHED [linux/arm64 stage-1 4/6] WORKDIR /home/node/app                                                                                                                0.0s
+ => CACHED [builder 2/7] RUN apk update &&     apk upgrade &&     apk add --no-cache nodejs=20.12.1-r0     npm=10.2.5-r0 &&     rm -rf /etc/apk/cache                      0.0s
+ => CACHED [builder 3/7] RUN addgroup -S node &&     adduser -S node -G node                                                                                               0.0s
+ => CACHED [linux/arm64 builder 4/7] WORKDIR /home/node/app                                                                                                                0.0s
+ => CACHED [linux/arm64 builder 5/7] COPY --chown=node:node server.js ./server.js                                                                                          0.0s
+ => CACHED [linux/arm64 builder 6/7] COPY --chown=node:node package.json ./package.json                                                                                    0.0s
+ => CACHED [builder 7/7] RUN npm install                                                                                                                                   0.0s
+ => CACHED [linux/arm64 stage-1 5/6] COPY --from=builder --chown=node:node /home/node/app/server.js ./server.js                                                            0.0s
+ => CACHED [linux/arm64 stage-1 6/6] COPY --from=builder --chown=node:node /home/node/app/node_modules ./node_modules                                                      0.0s
+
+
 
 
 
